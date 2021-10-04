@@ -1,0 +1,46 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    
+}
+.backToLogin{
+    margin:10px;
+}
+.errorComment{
+    color: red;
+    
+}
+.warningDIv{
+    color: red;
+
+}
+.movieDiv{
+    border: 1px solid blue;
+    margin: 5px;
+}
+#container{
+    background-color: pink;
+    text-align: center;
+}
+#header{
+    font-size: 50px;
+    color:pink;
+    text-align: center;
+}
+.theatrePlan{
+    width: 1200px;
+    height: 900px;
+    
+}
+.seatRow{
+    margin: 2px;
+    border: 2px solid pink;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+.screenDiv{
+    width: 1100px;
+    height: 20px;
+    background-color: gray;
+    text-align: center;
+}
