@@ -9,6 +9,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
+        <script src="script.js"></script>
     </head>
     <body>
     <div id="container">
@@ -32,19 +33,19 @@ session_start();
     $dbname = "tickets";
     $conn = new mysqli($servername, $username, $password, $dbname);
     if (isset($_GET['form'])) {
-        if(isset($_GET["email"])){
+        if (isset($_GET["email"])){
             $email = $_GET["email"];
-        } else{
+        } else {
             echo "<div class='errorComment'>Nie podano emaila</div>";
         }
-        if(isset($_GET['password'])){
+        if (isset($_GET['password'])){
             $passwordUser = $_GET["password"];
-        }else{
+        }else {
             echo "<div class='errorComment'>Nie podano hasła</div>";
         }
         $encodedPasswordUser = sha1($passwordUser);
         $comparingData= $conn->query("SELECT * FROM users WHERE email='$email' AND password='$encodedPasswordUser'");
-        if($comparingData->num_rows>0){
+        if ($comparingData->num_rows>0){
             $data=mysqli_fetch_all( $comparingData);
             $id=$data[0][0];
             $name=$data[0][1];
@@ -57,18 +58,9 @@ session_start();
                 'email'=>$email
             ];
             header('Location: moviesList.php');
-        } else{
+        } else {
             echo "<div class='warningDiv'>Login lub hasło jest niepoprawne.Spróbuj ponownie</div>";
         }
-        
-        
-        // $data = mysqli_fetch_all($comparingEmails);
-        // if ( $data[0][3] == sha1($_GET["password"]) ) {
-        //     echo "Hasła się zgadzają";
-        // } else {
-        //     echo "Hasła są źle";
-        // }
-
 }
 
 ?>

@@ -23,6 +23,7 @@
     </body>
 </html>
 <?php
+    
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -57,13 +58,13 @@
         }else {
             echo '<div class="errorComment">Email powinnien posiadać @ i mieć więcej niż 4 znaki!</div>';
         }
-        if($passwordUser == $repeatedPassword && strlen($passwordUser) > 8){
+        if ($passwordUser == $repeatedPassword && strlen($passwordUser) > 8){
             $conditionIsCorrect += 1;
         } else {
             echo '<div class="errorComment">Hasła powinny być takie samo i hasło powinno mieć więcej niż 8 znaków!</div>';
         }
         if ($conditionIsCorrect == 4) {
-            insertingToDataBase($name,$surname,$email,$passwordUser,$date,$conn);
+            insertingToDataBase($name, $surname, $email, $passwordUser, $date, $conn);
         }else {
             echo '<div class="errorComment">Wpisano błędne dane</div>';
         }

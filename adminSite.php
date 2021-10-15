@@ -14,7 +14,7 @@
 <div id="container">
         <h1>Strona Administracyjna </h1>
         <form action="adminSite.php" method="POST">
-        <input type="text" placeholder="Wpisz tytuł filmu" name="title">
+        <input type="text" placeholder = "Wpisz tytuł filmu" name="title">
         <input type="datetime-local" placeholder="Wpisz godzinę rozpoczęcia" name="startingTime">
         <input type="datetime-local" placeholder="Wpisz godzine zakończenia filmu" name="endingTime">
         <input type="text" placeholder="Wpisz cenę biletu na film" name="ticketPrice">
@@ -28,73 +28,43 @@
     $password = "";
     $dbname = "tickets";
     $conn = new mysqli($servername, $username, $password, $dbname);
-    // class Foo {
-    //     public $rowName;
-    //     public $movieID;
-    //     function set_rowName($rowName) {
-    //         $this->rowName = $rowName;
-    //       }
-    //     function set_movieID($movieID) {
-    //         $this->movieID = $movieID;
-    //     }
-    //     function createSeats($conn,$rowName,$movieID) {
-    //         for($i=0;$i<21;$i++){
-    //             $insertSeats = $conn->query("INSERT INTO seats (`id`,`seat_row`, `seat_place`,`movie_id`)VALUES (null,' $rowName', '$i','$movieID')");
-    //         }
-    //     }
-    // }
-   
     if (isset($_POST['form'])) {
-        if(isset($_POST["title"])){
-            $title=$_POST["title"];
-        } else{
+        if (isset($_POST["title"])){
+            $title = $_POST["title"];
+        } else {
             echo "<div class='errorComment'>Nie podano tytułu filmu</div>";
         }
-        if(isset($_POST["startingTime"])){
-            $startingTime=$_POST["startingTime"];
-        } else{
+        if (isset($_POST["startingTime"])){
+            $startingTime = $_POST["startingTime"];
+        } else {
             echo "<div class='errorComment'>Nie podano godziny rozpoczęcia filmu</div>";
         }
-        if(isset($_POST["endingTime"])){
-            $endingTime=$_POST["endingTime"];
-        } else{
+        if (isset($_POST["endingTime"])){
+            $endingTime = $_POST["endingTime"];
+        } else {
             echo "<div class='errorComment'>Nie podano godziny zakończenia filmu</div>";
         }
-        if(isset($_POST["ticketPrice"])){
-            $ticketPrice=$_POST["ticketPrice"];
-        } else{
+        if (isset($_POST["ticketPrice"])){
+            $ticketPrice = $_POST["ticketPrice"];
+        } else {
             echo "<div class='errorComment'>Nie podano ceny biletu na film</div>";
         }
         $insertMovie = $conn->query("INSERT INTO movies (`id`,`title_of_movie`, `start_time`,`end_time`, `price`)VALUES (null,' $title', '$startingTime','$endingTime','$ticketPrice')");
-        $movieData= $conn->query("SELECT id FROM movies WHERE start_time='$startingTime'");
-        $fetchMovieData=mysqli_fetch_all($movieData);
-        echo "<pre>";
-        print_r($fetchMovieData[0][0]);
-        echo "</pre>";
-        $fetchMovieID=$fetchMovieData[0][0];
-        if($insertMovie==true){
-            $tab=['A','B','C','D','E','F','G','H','I','J','K','M','N','O','P'];
+        $movieData = $conn->query("SELECT id FROM movies WHERE start_time='$startingTime'");
+        $fetchMovieData = mysqli_fetch_all($movieData);
+        $fetchMovieID = $fetchMovieData[0][0];
+        if($insertMovie == true){
+            $tab = ['A','B','C','D','E','F','G','H','I','J','K','M','N','O','P'];
 
             
           
-                for($j=0;$j<=14;$j++){
-                    for($i=1;$i<=20;$i++){
-                    echo('Rząd:'. $tab[$j] ." Miejsce:". $i . "<br>");
-                    $insertSeats = $conn->query("INSERT INTO seats (`id`,`seat_row`, `seat_place`,`movie_id`)VALUES (null,'$tab[$j]', '$i','$fetchMovieID')");
+                for($j = 0; $j <= 14; $j++){
+                    for($i = 1; $i <= 20; $i++){
+                    $insertSeats = $conn -> query("INSERT INTO seats (`id`,`seat_row`, `seat_place`,`movie_id`)VALUES (null,'$tab[$j]', '$i','$fetchMovieID')");
                 }
             }
-            // $rowA = new  Foo();
-            // $rowA ->set_rowName('A');
-            // $rowA ->set_movieID($fetchMovieData[0][0]);
-            // $rowA ->createSeats();
         }
         die;
-        
-        // $banana = new Fruit();
-        // $apple->set_name('Apple');
-        // $banana->set_name('Banana');    
-    
-    
     }
 ?>
 </body>
