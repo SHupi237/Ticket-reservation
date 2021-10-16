@@ -1,54 +1,53 @@
-body{
+body {
     font-family: 'Montserrat', sans-serif;
     
 }
-.backToLogin{
+.backToLogin {
     margin:10px;
 }
-.errorComment{
+.errorComment {
     color: red;
     
 }
-.warningDIv{
+.warningDIv {
     color: red;
 
 }
-.movieDiv{
+.movieDiv {
     border: 1px solid blue;
     margin: 5px;
 }
-#container{
+#container {
     background-color: pink;
     text-align: center;
 }
-#header{
+#header {
     font-size: 50px;
     color:pink;
     text-align: center;
 }
-.theatrePlan{
+.theatrePlan {
     width: 1200px;
     height: 900px;
-    
 }
-.seatRow{
+.seatRow {
     margin: 2px;
     border: 2px solid pink;
     width: 50px;
     height: 50px;
     float: left;
 }
-.seatRow:hover{
+.seatRow:hover {
     background-color: red;
     opacity: 50%;
 }
-.screenDiv{
+.screenDiv {
     width: 1100px;
     height: 20px;
     background-color: gray;
     text-align: center;
 }
-.choosedSeat{
+.choosedSeat {
     background-color: red;
     margin: 2px;
     border: 2px solid pink;
@@ -56,15 +55,15 @@ body{
     height: 50px;
     float: left;
 }
-.headerStyles{
+.headerStyles {
     background-color: pink;
     text-align: center;
 }
-.theatrePlan{
+.theatrePlan {
     border: 2px solid black;
     text-align: center;
     margin-left: 20%;
 } 
-.backToMovies{
+.backToMovies {
     text-align: center;
 }
