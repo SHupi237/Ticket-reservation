@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         var getId = document.getElementById("movieId")
         var choosedSeats = document.querySelectorAll('.choosedSeat');
         for (var k = 0; k < choosedSeats.length; k++){
-            stringReservedSeats = stringReservedSeats + choosedSeats[k].innerHTML + '|'
-            console.log(stringReservedSeats)
+            stringReservedSeats = stringReservedSeats + choosedSeats[k].innerHTML + '|';
         }
         $.ajax({
             type: 'get',
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             success: function( data ) {
             }
         });
-        console.log('http://localhost/Ticket-reservation/insertTicket.php?seats='+stringReservedSeats+'&movieid='+getId.value);
         setTimeout(function(){window.location.replace("moviesList.php")}, 3000);
     }
  });
