@@ -18,7 +18,14 @@
                     $password = "";
                     $dbname = "tickets";
                     $conn = new mysqli($servername, $username, $password, $dbname);
-                    echo "Witaj"." ". $_SESSION["user"]["username"] ." ".$_SESSION["user"]["surname"];
+                    function logOut() {
+                        session_destroy();
+                    }
+                    
+                    if (isset($_GET['hello'])) {
+                        logOut();
+                    }
+                    echo "<h1 class='headerInContainer'>Witaj"." ". $_SESSION["user"]["username"] ." ".$_SESSION["user"]["surname"] . "</h1>";
                     if ($_SESSION["user"]["email"] == "admin@gmail.com") {
                         header('Location:adminSite.php');
                     }
@@ -27,8 +34,9 @@
                     $fetchMovieData = mysqli_fetch_all($movieData);
                     for ($i = 0 ; $i<$movieData -> num_rows; $i++) {
                         echo "<div class='movieDiv'>Tytuł filmu: " . $fetchMovieData[$i][1] . "<br>" . "Godzina rozpoczęcia: " . $fetchMovieData[$i][2] . "<br>" . "Godzina zakończenia: " . $fetchMovieData[$i][3] . "<br>"  . "<br>" . "Cena: " . $fetchMovieData[$i][4] ." ". "zł" .   "</div>";
-                        echo "<a href='seatReservation.php?movieid=" . $fetchMovieData[$i][0] ."'>Zarezerwuj miejsce</a>";
+                        echo "<a href='seatReservation.php?movieid=" . $fetchMovieData[$i][0] ."'>Zarezerwuj miejsce</a><br>";
                     }
+                    echo "<a class='links' href='index.php?hello=true'>Wyloguj się</a>";
             ?>
         </div>
     </body>

@@ -11,6 +11,7 @@
         <script src="script.js"></script>   
     </head>
     <body>
+        <h1 id="header">Rejestracja</h1> 
         <div class="headerStyles">
             <h1>Jesteś na stronie rezerwacji miejsc</h1> 
         </div>
@@ -21,8 +22,8 @@
             $dbname = "tickets";
             $conn = new mysqli($servername, $username, $password, $dbname);
             
-            if (isset($_POST['movieid'])) {
-                $id = $_POST['movieid'];
+            if (isset($_GET['movieid'])) {
+                $id = $_GET['movieid'];
                 echo "<input id='movieId' value='" . $id . "' type='hidden'>";
                 $seatData = $conn->query("SELECT * FROM seats WHERE movie_id='$id'");
                 $seatFetch = mysqli_fetch_all($seatData);
@@ -31,11 +32,11 @@
                     echo("<div class='seatRow' id='seat" . $j . "'>". $seatFetch[$j][1] . $seatFetch[$j][2] . "</div>");
                 }
             }
-                echo("<button id='submitButton'>Zarezerwuj miejsce</button>");
                 echo "</div>";
+                echo("<button class='submitButtons' id='submitButton'>Zarezerwuj miejsce</button>");
         ?>
         <div class="backToMovies">
-            <a href="moviesList.php">Wróć do wyboru filmu</a>   
+            <a class="links" href="moviesList.php">Wróć do wyboru filmu</a>   
         </div>
     </body>
 </html>

@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         var choosedSeats = document.querySelectorAll('.choosedSeat');
         for (var k = 0; k < choosedSeats.length; k++){
             stringReservedSeats = stringReservedSeats + choosedSeats[k].innerHTML + '|';
+            
         }
+        alert("Zarezerwowano miejsca:" + stringReservedSeats )
         $.ajax({
             type: 'get',
             url: 'http://localhost/Ticket-reservation/insertTicket.php?seats='+stringReservedSeats+'&movieid='+getId.value,

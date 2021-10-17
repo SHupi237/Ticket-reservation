@@ -11,15 +11,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
     </head>
     <body>
+        <h1 id="header">Strona Administracyjna </h1>
         <div id="container">
-            <h1>Strona Administracyjna </h1>
+            <div class="headerInContainer">Dodaj film</div>
             <form action="adminSite.php" method="POST">
-                <input type="text" placeholder = "Wpisz tytuł filmu" name="title">
-                <input type="datetime-local" placeholder="Wpisz godzinę rozpoczęcia" name="startingTime">
-                <input type="datetime-local" placeholder="Wpisz godzine zakończenia filmu" name="endingTime">
-                <input type="text" placeholder="Wpisz cenę biletu na film" name="ticketPrice">
-                <input type="submit" name="form" value="Dodaj film" ><br>
+                <input type="text" class='inputForm' placeholder = "Wpisz tytuł filmu" name="title">
+                <input type="datetime-local" class='inputForm' placeholder="Wpisz godzinę rozpoczęcia" name="startingTime">
+                <input type="datetime-local" class='inputForm' placeholder="Wpisz godzine zakończenia filmu" name="endingTime">
+                <input type="text" placeholder="Wpisz cenę biletu na film" class='inputForm' name="ticketPrice">
+                <input type="submit" class="submitButtons" name="form" value="Dodaj film" ><br>
             </form>
+            <a class="links" href="index.php">Wróć logowania</a>
         </div>
             
     <?php

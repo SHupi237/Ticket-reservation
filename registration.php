@@ -6,18 +6,22 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Strona Rejestracji</title>
             <link rel="stylesheet" href="styles.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
         </head>
         <body>
+            <h1 id="header">Rejestracja</h1> 
             <div  id="container">
-                <h1>Zarejestruj się</h1>
+            <div class="headerInContainer">Zarejestruj się</div>
                 <form method="POST">
-                    <input type="text" placeholder="Wpisz imię" name="name">
-                    <input type="text" placeholder="Wpisz nazwisko" name="surname">
-                    <input type="text" placeholder="Wpisz email" name="email">
-                    <input type="text" placeholder="Wpisz hasło" name="password">
-                    <input type="text" placeholder="Wpisz ponownie hasło" name="repeatedPassword">
-                    <input type="submit" name="form" value="Zarejestruj się"><br>
-                    <a href="index.php">Wróć do logowania</a>
+                    <input type="text" class='inputForm' placeholder="Wpisz imię" name="name">
+                    <input type="text" class='inputForm' placeholder="Wpisz nazwisko" name="surname">
+                    <input type="text" class='inputForm' placeholder="Wpisz email" name="email">
+                    <input type="text" class='inputForm' placeholder="Wpisz hasło" name="password">
+                    <input type="text" class='inputForm' placeholder="Wpisz ponownie hasło" name="repeatedPassword"><br>
+                    <input type="submit" class="submitButtons" name="form" value="Zarejestruj się"><br>
+                    <a class="links"  href="index.php">Wróć do logowania</a>
                 </form>
             </div>
         </body>
@@ -47,27 +51,27 @@
         if (strlen($name) > 2) {
             $conditionIsCorrect += 1;
         } else {
-            echo '<div class="errorComment">Imie powinno mieć co najmniej 3 znaki!</div>';
+            echo '<div class="warningDiv">Imie powinno mieć co najmniej 3 znaki!</div>';
         }
         if (strlen($surname) > 3) {
             $conditionIsCorrect += 1;
         } else {
-            echo '<div class="errorComment">Nazwisko powinno mieć co najmniej 4 znaki!</div>';
+            echo '<div class="warningDiv">Nazwisko powinno mieć co najmniej 4 znaki!</div>';
         }
         if (strlen($email) > 4 && strpos($email,"@")) {
             $conditionIsCorrect += 1;
         } else {
-            echo '<div class="errorComment">Email powinnien posiadać @ i mieć więcej niż 4 znaki!</div>';
+            echo '<div class="warningDiv">Email powinnien posiadać @ i mieć więcej niż 4 znaki!</div>';
         }
         if ($passwordUser == $repeatedPassword && strlen($passwordUser) > 8) {
             $conditionIsCorrect += 1;
         } else {
-            echo '<div class="errorComment">Hasła powinny być takie samo i hasło powinno mieć więcej niż 8 znaków!</div>';
+            echo '<div class="warningDiv">Hasła powinny być takie samo i hasło powinno mieć więcej niż 8 znaków!</div>';
         }
         if ($conditionIsCorrect == 4) {
             insertingToDataBase($name, $surname, $email, $passwordUser, $date, $conn);
         } else {
-            echo '<div class="errorComment">Wpisano błędne dane</div>';
+            echo '<div class="warningDiv">Wpisano błędne dane</div>';
         }
     } 
 ?>

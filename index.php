@@ -12,13 +12,14 @@
             <script src="script.js"></script>
         </head>
         <body>
+            <h1 id="header">Strona Logowania</h1> 
             <div id="container">
-                <h1>Zaloguj się</h1>
-                <form>
-                    <input type="text" placeholder="Wpisz email" name="email">
-                    <input type="password" placeholder="Wpisz hasło" name="password">
-                    <input type="submit" name="form" value="Zaloguj się" ><br>
-                        <a href="registration.php">Nie masz jeszcze konta? Zarejestruj się</a>
+                <div class="headerInContainer">Zaloguj się</div>
+                <form method="POST">
+                    <input type="text" class='inputForm' placeholder="Wpisz email" name="email">
+                    <input type="password" class='inputForm' placeholder="Wpisz hasło" name="password"><br>
+                    <input type="submit" class="submitButtons"  name="form" value="Zaloguj się" ><br>
+                        <a class="links" href="registration.php">Nie masz jeszcze konta? Zarejestruj się</a>
                 </form>
             </div>
         </body>
@@ -36,12 +37,12 @@ session_start();
         if (isset($_POST["email"])) {
             $email = $_POST["email"];
         } else {
-            echo "<div class='errorComment'>Nie podano emaila</div>";
+            echo "<div class='warningDiv'>Nie podano emaila</div>";
         }
         if (isset($_POST['password'])) {
             $passwordUser = $_POST["password"];
         } else {
-            echo "<div class='errorComment'>Nie podano hasła</div>";
+            echo "<div class='warningDivt'>Nie podano hasła</div>";
         }
         $encodedPasswordUser = sha1($passwordUser);
         $comparingData= $conn->query("SELECT * FROM users WHERE email='$email' AND password='$encodedPasswordUser'");
